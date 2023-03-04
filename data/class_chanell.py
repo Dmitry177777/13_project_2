@@ -11,7 +11,7 @@ class Channel ():
         self.etag = self.channel.get ("etag") # etag
         self.pageInfo = self.channel.get ("pageInfo") # pageInfo
         self.items = self.channel.get("items")  # items
-
+    pass
 
     def print_info (self):
         """Метод вывода данных о канале"""
