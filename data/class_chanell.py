@@ -25,7 +25,16 @@ class Channel ():
 
         # Channel.to_json(self)
 
-        pass
+    def __repr__(self):
+        return f'Channel({self.title}, {self.video_count}, {self.viewCount})'
+
+    def __str__(self):
+        return f'Youtube-канал: {self.title}'
+
+    def __add__(self, other):
+        count = self.subscriberCount + other.subscriberCount
+        return print(f'{count}')
+
 
     @property
     def channel_id(self):

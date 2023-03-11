@@ -25,5 +25,23 @@ print(vdud.print_info())
 # создать файл 'vdud.json' в данными по каналу
 vdud.to_json('vdud.json')
 
+ch1=Channel('UCMCgOm8GZkHp8zJ6l7_hIuA')
+ch2=Channel('UCXD8fPuwMfizCmgMtc9KAqQ')
+
+
+
+print(ch1)
+#Youtube-канал: вДудь
+print(ch2)
+#Youtube-канал: Редакция
+
+#ch1 > ch2
+#True
+
+#ch1 < ch2
+#False
+
+ch1 + ch2
+#1030000076
 
 
