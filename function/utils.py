@@ -23,7 +23,7 @@ print(Channel.get_service())
 print(vdud.print_info())
 
 # создать файл 'vdud.json' в данными по каналу
-# vdud.to_json('vdud.json')
+vdud.to_json('vdud.json')
 
 
 
