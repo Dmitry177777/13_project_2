@@ -1,17 +1,30 @@
-import os
-from googleapiclient.discovery import build
+
 from data.class_chanell import Channel
 
-# API_KEY скопирован из гугла и вставлен в переменные окружения
-api_key: str = os.getenv('API_KEY')
-
-# создать специальный объект для работы с API
-youtube = build('youtube', 'v3', developerKey=api_key)
-
-# print(youtube)
 channel_id = 'UCMCgOm8GZkHp8zJ6l7_hIuA'
-vdud = Channel(youtube, channel_id)
-vdud.print_info()
+vdud =Channel(channel_id)
+
+# получаем значения атрибутов
+print(vdud.title)
+# вДудь
+print(vdud.video_count)
+# 163
+print(vdud.url)
+# https://www.youtube.com/channel/UCMCgOm8GZkHp8zJ6l7_hIuA
+
+# менять не можем
+# vdud.channel_id= 'Новое название'
+# AttributeError: property 'channel_id' of 'Channel' object has no setter
+
+# можем получить объект для работы с API вне класса
+print(Channel.get_service())
+# <googleapiclient.discovery.Resource object at 0x000002B1E54F9750>
+
+
+# создать файл 'vdud.json' в данными по каналу
+# vdud.to_json('vdud.json')
+
+
 
 
 #channel_id = 'UCMCgOm8GZkHp8zJ6l7_hIuA'  # вДудь
