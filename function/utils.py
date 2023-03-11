@@ -2,7 +2,7 @@
 from data.class_chanell import Channel
 
 channel_id = 'UCMCgOm8GZkHp8zJ6l7_hIuA'
-vdud =Channel(channel_id)
+vdud = Channel(channel_id)
 
 # получаем значения атрибутов
 print(vdud.title)
@@ -13,7 +13,7 @@ print(vdud.url)
 # https://www.youtube.com/channel/UCMCgOm8GZkHp8zJ6l7_hIuA
 
 # менять не можем
-# vdud.channel_id= 'Новое название'
+vdud.channel_id = 'Новое название'
 # AttributeError: property 'channel_id' of 'Channel' object has no setter
 
 # можем получить объект для работы с API вне класса
@@ -27,11 +27,3 @@ print(vdud.print_info())
 
 
 
-
-#channel_id = 'UCMCgOm8GZkHp8zJ6l7_hIuA'  # вДудь
-
-# channel_id = 'UC1eFXmJNkjITxPFWTy6RsWg'    # Редакция
-#
-# channel = youtube.channels().list(id=channel_id, part='snippet,statistics').execute()
-#
-# print(json.dumps(channel, indent=2, ensure_ascii=False))

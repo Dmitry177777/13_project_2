@@ -15,7 +15,7 @@ class Channel ():
         self.pageInfo = self.channel.get ("pageInfo") # pageInfo
         self.items = self.channel.get("items")  # items
 
-        self.channel_id =   channel_id # - id канала
+        self.channel_id = channel_id # - id канала
         self.title = self.channel.get('items',{})[0].get('snippet',{}).get('title')  # - название канала
         self.description = self.channel.get('items',{})[0].get('snippet',{}).get('description') # - описание канала
         self.url = f'https://www.youtube.com/channel/{channel_id}'   # - ссылка на канал
@@ -23,9 +23,22 @@ class Channel ():
         self.video_count =  self.channel.get('items',{})[0].get('statistics',{}).get('videoCount') # - количество видео
         self.viewCount = self.channel.get('items',{})[0].get('statistics',{}).get('viewCount')  # - общее количество просмотров
 
-
-
         pass
+
+    @property
+    def channel_id(self):
+        pass
+    @channel_id.setter
+    def channel_id(self, new_id):
+        return print(f"AttributeError: property 'channel_id' of 'Channel' object has no setter")
+
+    def to_json(self):
+        """Метод вывода данных о канале"""
+        self.channel_statistic = json.dumps(self.channel, indent=2, ensure_ascii=False)
+
+        return self.channel_statistic
+
+
 
     def print_info (self):
         """Метод вывода данных о канале"""
@@ -42,18 +55,3 @@ class Channel ():
         return youtube
 
 
-# Модифицируйте метод `__init__`, чтобы при создании экземпляра класса происходила инициализация следующих атрибутов класса:
-#
-# - id канала
-# - название канала
-# - описание канала
-# - ссылка на канал
-# - количество подписчиков
-# - количество видео
-# - общее количество просмотров
-#
-# Сделайте так, чтобы можно было получить id канала, но нельзя было его изменять/удалять.
-#
-# Реализуйте метод класса, который возвращает объект для работы с API ютуба. Используйте этот метод в классе, чтобы избежать дублирования кода.
-#
-# Реализуйте метод, который сохраняет информацию по каналу, хранящуюся в атрибутах экземпляра класса `Channel`, в json-файл. Продумайте самостоятельно формат записи в файл.
