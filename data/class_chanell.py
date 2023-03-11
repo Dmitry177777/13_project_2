@@ -26,7 +26,7 @@ class Channel ():
         # Channel.to_json(self)
 
     def __repr__(self):
-        return f'Channel({self.title}, {self.video_count}, {self.viewCount})'
+        return f'Channel({self.title}, {self.video_count},{self.viewCount},{self.subscriberCount})'
 
     def __str__(self):
         return f'Youtube-канал: {self.title}'
@@ -34,6 +34,18 @@ class Channel ():
     def __add__(self, other):
         count = self.subscriberCount + other.subscriberCount
         return print(f'{count}')
+
+    def __gt__(self, other):
+        A = int(self.subscriberCount)
+        B = int(other.subscriberCount)
+
+        return print(f'{(A > B)}')
+
+    def __lt__(self, other):
+        A = int(self.subscriberCount)
+        B = int(other.subscriberCount)
+
+        return print(f'{(A < B)}')
 
 
     @property

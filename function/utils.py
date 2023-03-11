@@ -32,13 +32,17 @@ ch2=Channel('UCXD8fPuwMfizCmgMtc9KAqQ')
 
 print(ch1)
 #Youtube-канал: вДудь
+print(repr(ch1))
+
 print(ch2)
 #Youtube-канал: Редакция
+print(repr(ch2))
 
-#ch1 > ch2
+
+ch1 > ch2
 #True
 
-#ch1 < ch2
+ch1 < ch2
 #False
 
 ch1 + ch2
