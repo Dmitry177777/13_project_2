@@ -11,7 +11,7 @@ class Channel ():
         self.channel = youtube.channels().list(id=channel_id, part='snippet,statistics').execute()
 
         self.kind = self.channel.get ('kind') # kind
-        self.url = self.channel.get ("etag") # etag
+        #self.url = self.channel.get ("etag") # etag
         self.pageInfo = self.channel.get ("pageInfo") # pageInfo
         self.items = self.channel.get("items")  # items
 
@@ -23,6 +23,8 @@ class Channel ():
         self.video_count =  self.channel.get('items',{})[0].get('statistics',{}).get('videoCount') # - количество видео
         self.viewCount = self.channel.get('items',{})[0].get('statistics',{}).get('viewCount')  # - общее количество просмотров
 
+        # Channel.to_json(self)
+
         pass
 
     @property
@@ -32,11 +34,27 @@ class Channel ():
     def channel_id(self, new_id):
         return print(f"AttributeError: property 'channel_id' of 'Channel' object has no setter")
 
-    def to_json(self):
-        """Метод вывода данных о канале"""
-        self.channel_statistic = json.dumps(self.channel, indent=2, ensure_ascii=False)
+    def to_json(self, file):
+        """Метод переноса атрибутов класса в файл json"""
 
-        return self.channel_statistic
+        to_json = {
+            'kind': self.kind,
+            #'url': access_template,
+            'pageInfo': self.pageInfo,
+            'items': self.items,
+            'channel_id': self.channel_id,
+            'title': self.title,
+            'description': self.description,
+            'url': self.url,
+            'subscriberCount': self.subscriberCount,
+            'video_count': self.video_count,
+            'viewCount': self.viewCount
+            }
+
+        with open(file, 'w') as f:
+            f.write(json.dumps(to_json))
+
+        pass
 
 
 
