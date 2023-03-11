@@ -20,6 +20,7 @@ print(vdud.url)
 print(Channel.get_service())
 # <googleapiclient.discovery.Resource object at 0x000002B1E54F9750>
 
+print(vdud.print_info())
 
 # создать файл 'vdud.json' в данными по каналу
 # vdud.to_json('vdud.json')
