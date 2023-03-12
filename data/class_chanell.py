@@ -81,9 +81,9 @@ class Channel ():
 
     def print_info (self):
         """Метод вывода данных о канале"""
-        self.channel_statistic = json.dumps(self.channel, indent=2, ensure_ascii=False)
+        self.log = json.dumps(self.channel, indent=2, ensure_ascii=False)
 
-        return self.channel_statistic
+        return self.log
     @staticmethod
     def get_service():
         # API_KEY скопирован из гугла и вставлен в переменные окружения
@@ -92,5 +92,34 @@ class Channel ():
         # создать специальный объект для работы с API
         youtube = build('youtube', 'v3', developerKey=api_key)
         return youtube
+
+
+class Video(Channel):
+    def __init__(self, video_id):
+        self.video_id=video_id
+        youtube = Video.get_service()
+        self.video = youtube.commentThreads().list(videoId=video_id, part='id,snippet').execute()
+
+    def print_info(self):
+        """Метод вывода данных о канале"""
+        self.log = json.dumps(self.video, indent=2, ensure_ascii=False)
+
+        return self.log
+
+    def __repr__(self):
+        return f'Video({self.title}, {self.video_count},{self.viewCount},{self.subscriberCount})'
+
+    def __str__(self):
+        return f'Video: {self.title}'
+class PLVideo ():
+    def __init__(self, plv_id, video_id):
+        self.plv_id = plv_id
+
+    def __repr__(self):
+        return f'PLVideo({self.title}, {self.video_count},{self.viewCount},{self.subscriberCount})'
+
+    def __str__(self):
+        return f'PLVideo: {self.title}'
+
 
 

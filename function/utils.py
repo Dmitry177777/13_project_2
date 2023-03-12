@@ -1,5 +1,8 @@
 
 from data.class_chanell import Channel
+from data.class_chanell import PLVideo
+from data.class_chanell import Video
+
 
 channel_id = 'UCMCgOm8GZkHp8zJ6l7_hIuA'
 vdud = Channel(channel_id)
@@ -48,4 +51,15 @@ ch1 < ch2
 ch1 + ch2
 #1030000076
 
+# https://www.youtube.com/watch?v=9lO06Zxhu88
+video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб "etag": "GQNNYQsMXoegKlWQYVAogTvQdXM"
 
+print(video1.print_info())
+
+video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
+#https://www.youtube.com/watch?v=BBotskuyw_M
+#print(video1)
+#Как устроена IT-столица мира / Russian Silicon Valley (English subs)
+print(video2)
+#Пушкин: наше все? (Литература)
+# шаблон: 'название_видео (название_плейлиста)
