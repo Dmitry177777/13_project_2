@@ -55,6 +55,8 @@ ch1 + ch2
 video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб "etag": "GQNNYQsMXoegKlWQYVAogTvQdXM"
 
 print(video1.print_info())
+print(video1)
+print(repr(video1))
 
 video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
 #https://www.youtube.com/watch?v=BBotskuyw_M
