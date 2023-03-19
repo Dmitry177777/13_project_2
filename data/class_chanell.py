@@ -20,7 +20,7 @@ class Channel ():
         self.description = self.channel.get('items',{})[0].get('snippet',{}).get('description') # - описание канала
         self.url = f'https://www.youtube.com/channel/{channel_id}'   # - ссылка на канал
         self.subscriberCount = self.channel.get('items',{})[0].get('statistics',{}).get('subscriberCount')  # - количество подписчиков
-        self.video_count =  self.channel.get('items',{})[0].get('statistics',{}).get('videoCount') # - количество видео
+        self.video_count = self.channel.get('items',{})[0].get('statistics',{}).get('videoCount') # - количество видео
         self.viewCount = self.channel.get('items',{})[0].get('statistics',{}).get('viewCount')  # - общее количество просмотров
 
         # Channel.to_json(self)
@@ -118,14 +118,33 @@ class Video(Channel):
     def __str__(self):
         return f'Video: {self.title}'
 class PLVideo (Video):
-    def __init__(self, plv_id, video_id):
+    def __init__(self, video_id, plv_id):
         self.plv_id = plv_id
+        self.video_id = video_id
+
+
+
+        youtube = PLVideo.get_service()
+        self.plv_item = youtube.playlistItems().list(playlistId = plv_id, part='id,snippet').execute()
+        self.plv_=youtube.playlists().list(id = plv_id,  part='id,snippet').execute()
+        for plv1 in self.plv_item.get('items'):
+            if plv1.get('snippet', {}).get('resourceId', {}).get('videoId')  == self.video_id:
+
+                self.title = plv1.get('snippet', {}).get('title')  # - название видео
+        self.plv =self.plv_.get('items',{})[0].get('snippet', {}).get('title')
+
+
+    def print_info(self):
+        """Метод вывода данных о канале"""
+        self.log1 = json.dumps(self.plv_item, indent=2, ensure_ascii=False)
+        self.log2 = json.dumps(self.plv_, indent=2, ensure_ascii=False)
+        return self.log1 + self.log2
 
     def __repr__(self):
         return f'PLVideo({self.title}, {self.video_count},{self.viewCount},{self.subscriberCount})'
 
     def __str__(self):
-        return f'PLVideo: {self.title}'
+        return f'{self.title} ({self.plv})'
 
 
 

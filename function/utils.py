@@ -23,7 +23,7 @@ vdud.channel_id = 'Новое название'
 print(Channel.get_service())
 # <googleapiclient.discovery.Resource object at 0x000002B1E54F9750>
 
-print(vdud.print_info())
+# print(vdud.print_info())
 
 # создать файл 'vdud.json' в данными по каналу
 vdud.to_json('vdud.json')
@@ -35,11 +35,11 @@ ch2=Channel('UCXD8fPuwMfizCmgMtc9KAqQ')
 
 print(ch1)
 #Youtube-канал: вДудь
-print(repr(ch1))
+# print(repr(ch1))
 
 print(ch2)
 #Youtube-канал: Редакция
-print(repr(ch2))
+# print(repr(ch2))
 
 
 ch1 > ch2
@@ -54,14 +54,16 @@ ch1 + ch2
 # https://www.youtube.com/watch?v=9lO06Zxhu88
 video1 = Video('9lO06Zxhu88')  # '9lO06Zxhu88' - это id видео из ютуб "etag": "GQNNYQsMXoegKlWQYVAogTvQdXM"
 
-print(video1.print_info())
+# print(video1.print_info())
 print(video1)
-print(repr(video1))
+# print(repr(video1))
 
 video2 = PLVideo('BBotskuyw_M', 'PL7Ntiz7eTKwrqmApjln9u4ItzhDLRtPuD')
 #https://www.youtube.com/watch?v=BBotskuyw_M
 #print(video1)
 #Как устроена IT-столица мира / Russian Silicon Valley (English subs)
+# print(video2.print_info())
 print(video2)
+# print(repr(video2))
 #Пушкин: наше все? (Литература)
 # шаблон: 'название_видео (название_плейлиста)
