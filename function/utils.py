@@ -6,22 +6,22 @@ from data.class_chanell import PlayList
 
 pl = PlayList('PLguYHBi01DWr4bRWc4uaguASmo7lW4GCb')
 
-pl.title
+print(pl.plv)
 # Редакция. АнтиТревел
 
-pl.url
+print(pl.url)
 # https://www.youtube.com/playlist?list=PLguYHBi01DWr4bRWc4uaguASmo7lW4GCb
 
-duration = plist.total_duration
+duration = pl.total_duration
 print(duration)
 # 3:41:01
-print(type(duration))
-# <class 'datetime.timedelta'>
-print(duration.total_seconds())
-# 13261.0
-
-pl.show_best_video()
-# https://youtu.be/9Bv2zltQKQA
+# print(type(duration))
+# # <class 'datetime.timedelta'>
+# print(duration.total_seconds())
+# # 13261.0
+#
+# pl.show_best_video()
+# # https://youtu.be/9Bv2zltQKQA
 
 
 

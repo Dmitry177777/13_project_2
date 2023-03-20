@@ -1,5 +1,6 @@
 import json
 import os
+import datetime
 from googleapiclient.discovery import build
 class Channel ():
     """"Класс канала"""
@@ -147,4 +148,18 @@ class PLVideo (Video):
         return f'{self.title} ({self.plv})'
 
 
+class PlayList (PLVideo):
+    def __init__(self, plv_id):
+        super().__init__(self, plv_id)
+        self.url = f'https://www.youtube.com/playlist?list=/{plv_id}'  # - ссылка на плейлист
 
+    def total_duration (self):
+        self.total_duration = self.plv_.get('items', {})[0].get('snippet', {}).get('publishedAt')
+        return print(f'{self.total_duration}')
+
+    def show_best_video (self):
+        self.video_id =
+        pass
+
+    def __repr__(self):
+        return f'PlayList({self.plv},)'
