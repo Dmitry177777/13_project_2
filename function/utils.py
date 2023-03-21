@@ -12,6 +12,7 @@ print(pl.plv)
 print(pl.url)
 # https://www.youtube.com/playlist?list=PLguYHBi01DWr4bRWc4uaguASmo7lW4GCb
 
+print(pl.print_info())
 duration = pl.total_duration
 print(duration)
 # 3:41:01
