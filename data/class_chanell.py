@@ -1,6 +1,7 @@
 import json
 import os
 import datetime
+
 from googleapiclient.discovery import build
 import isodate
 class Channel ():
@@ -166,20 +167,42 @@ class PlayList (PLVideo):
         response = youtube.videos().list(part='contentDetails,statistics', id=','.join(video_ids)).execute()
 
         total_duration = datetime.timedelta()
-
         for video in response['items']:
             iso_8601_duration = video['contentDetails']['duration']
             duration = isodate.parse_duration(iso_8601_duration)
             total_duration += duration
 
+        self.total_seconds = total_duration.total_seconds()
+
         return f'{total_duration}'
+
+    # def total_seconds(self, total_duration):
+    #     total_seconds = total_duration
+    #     total = total_duration.split(":")
+    #
+    #
+    #     return f'{total_seconds}'
+
 
 
     def show_best_video (self):
 
+        youtube = Channel.get_service()
+        video_ids: list[str] = [video['contentDetails']['videoId'] for video in self.plv_item['items']]
+        response = youtube.videos().list(part='snippet,statistics', id=','.join(video_ids)).execute()
 
+        max = 0
+        for video in response['items']:
+            like_count: int  = int (video['statistics']['likeCount'])
+            video_title: str = video['snippet']['title']
 
-        pass
+            if max < like_count:
+                max = like_count
+                video_max = video_title
+                video_url: str = f" https://youtu.be/{video['id']}"  # - ссылка на видео
+
+        return print(f'{video_max}, {max} лайков, url: {video_url}')
+
 
 
     def __repr__(self):

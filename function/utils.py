@@ -3,6 +3,7 @@
 # from data.class_chanell import PLVideo
 # from data.class_chanell import Video
 from data.class_chanell import PlayList
+from datetime import time, timedelta
 
 pl = PlayList('PLguYHBi01DWr4bRWc4uaguASmo7lW4GCb')
 
@@ -12,16 +13,16 @@ print(pl.plv)
 print(pl.url)
 # https://www.youtube.com/playlist?list=PLguYHBi01DWr4bRWc4uaguASmo7lW4GCb
 
-print(pl.print_info())
+# print(pl.print_info())
 duration = pl.total_duration
 print(duration)
 # 3:41:01
-# print(type(duration))
+print(type(duration))
 # # <class 'datetime.timedelta'>
-# print(duration.total_seconds())
+print(duration.total_seconds())
 # # 13261.0
 #
-# pl.show_best_video()
+pl.show_best_video()
 # # https://youtu.be/9Bv2zltQKQA
 
 
