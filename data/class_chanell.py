@@ -174,7 +174,7 @@ class PlayList (PLVideo):
 
         self.total_seconds = total_duration.total_seconds()
 
-        return f'{total_duration}'
+        return total_duration
 
     # def total_seconds(self, total_duration):
     #     total_seconds = total_duration
