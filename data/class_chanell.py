@@ -108,13 +108,13 @@ class Video(Channel):
             self.video_count = self.video.get('items', {})[0].get('statistics', {}).get('videoCount')  #!!!!! - количество видео
             self.viewCount = self.video.get('items', {})[0].get('statistics', {}).get('viewCount')  # - общее количество просмотров
         except(AttributeError, IndexError):
-            print("Ошибка")
+            print("введено id, с которым нет данные о видео по API")
             self.video = None
             self.title = None
             self.subscriberCount = None
             self.video_count = None
             self.viewCount = None
-            self.like_count = None
+            self.like_count = None # такого атрибута не было
 
     def print_info(self):
         """Метод вывода данных о канале"""

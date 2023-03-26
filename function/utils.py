@@ -7,6 +7,8 @@ from datetime import time, timedelta
 
 
 broken_video = Video('broken_video_id')
+print(broken_video.video_id)
+# 'broken_video_id'
 print(broken_video.title)
 # None
 print(broken_video.like_count)
