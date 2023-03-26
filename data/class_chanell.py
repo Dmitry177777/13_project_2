@@ -99,15 +99,22 @@ class Channel ():
 
 class Video(Channel):
     def __init__(self, video_id):
-        self.video_id = video_id
-        youtube = Video.get_service()
-        self.video = youtube.videos().list(id=video_id, part='snippet, recordingDetails, contentDetails, statistics').execute()
-
-        self.title = self.video.get('items', {})[0].get('snippet', {}).get('title')  # - название канала
-        self.subscriberCount = self.video.get('items', {})[0].get('statistics', {}).get('subscriberCount')  #!!!!!! - количество подписчиков
-        self.video_count = self.video.get('items', {})[0].get('statistics', {}).get('videoCount')  #!!!!! - количество видео
-        self.viewCount = self.video.get('items', {})[0].get('statistics', {}).get('viewCount')  # - общее количество просмотров
-
+        try:
+            self.video_id = video_id
+            youtube = Video.get_service()
+            self.video = youtube.videos().list(id=video_id, part='snippet, recordingDetails, contentDetails, statistics').execute()
+            self.title = self.video.get('items', {})[0].get('snippet', {}).get('title')  # - название канала
+            self.subscriberCount = self.video.get('items', {})[0].get('statistics', {}).get('subscriberCount')  #!!!!!! - количество подписчиков
+            self.video_count = self.video.get('items', {})[0].get('statistics', {}).get('videoCount')  #!!!!! - количество видео
+            self.viewCount = self.video.get('items', {})[0].get('statistics', {}).get('viewCount')  # - общее количество просмотров
+        except(AttributeError, IndexError):
+            print("Ошибка")
+            self.video = None
+            self.title = None
+            self.subscriberCount = None
+            self.video_count = None
+            self.viewCount = None
+            self.like_count = None
 
     def print_info(self):
         """Метод вывода данных о канале"""
